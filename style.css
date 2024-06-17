@@ -1,0 +1,102 @@
+body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .highlight {
+    background-color: #f0f8ff;
+  }
+  
+  .nav-tabs {
+    border-bottom: 1px solid #09c184;
+  }
+  
+  .nav-tabs .nav-link {
+    font-size: 18px;
+    color: #0c5149;
+    margin-right: 10px;
+    border: 1px solid transparent;
+    border-color: #09c184;
+    background-color: transparent;
+    border-radius: 10px;
+  }
+  
+  .nav-tabs .nav-link.active {
+    background-color: #09c184;
+    color: white;
+  }
+  
+  .nav-tabs .nav-link:hover {
+    background-color: #0f928c;
+  }
+  
+  .tab-content {
+    margin-top: 20px;
+  }
+  
+  .currency-field {
+    background-color: #e0ffe0;
+    font-weight: bold;
+  }
+  
+  .result-field {
+    background-color: #0fcda9;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .btn-custom {
+    border: 2px solid;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-right: 15px;
+  }
+  
+  #cadastrarBtn {
+    border-color: #07f9a2;
+    color: #07f9a2;
+  }
+  
+  #editarBtn {
+    border-color: #09c184;
+    color: #09c184;
+  }
+  
+  #excluirBtn {
+    border-color: #ec225e;
+    color: #ec225e;
+  }
+  
+  #pesquisarBtn {
+    border-color: #0a8967;
+    color: #0a8967;
+  }
+  
+  #limparBtn {
+    border-color: #0c5149;
+    color: #0c5149;
+  }
+  
+  .spinner-border {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.2em;
+  }
+  
+  .table-responsive {
+    white-space: nowrap;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #7cd7cf;
+  }
+  
+  .form-control {
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    text-transform: uppercase;
+  }
+  

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Larissa Kraskin</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4" style="font-size: 25px; color: #0c5149; text-align: left;">Larissa Kraskin</h2>
+    <ul class="nav nav-tabs justify-content-start" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="cadastrarcliente-tab" data-toggle="tab" href="#cadastrarcliente" role="tab" aria-controls="cadastrarcliente" aria-selected="true">Cadastrar Cliente</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="listarcliente-tab" data-toggle="tab" href="#listarcliente" role="tab" aria-controls="listarcliente" aria-selected="false">Listar Clientes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="grafico-tab" data-toggle="tab" href="#grafico" role="tab" aria-controls="grafico" aria-selected="false">Gráfico</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="cadastrarcliente" role="tabpanel" aria-labelledby="cadastrarcliente-tab">
+        <div class="card">
+          <div class="card-body">
+            <form id="clienteForm">
+              <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="id">ID</label>
+                  <input type="text" class="form-control" id="id" name="id" readonly>
+                </div>
+                <div class="form-group col-md-10">
+                  <label for="cliente">Nome</label>
+                  <input type="text" class="form-control highlight" id="cliente" name="cliente" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="tel">Telefone</label>
+                  <input type="text" class="form-control" id="tel" name="tel" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="idade">Idade</label>
+                  <input type="number" class="form-control" id="idade" name="idade" required min="0" max="150">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="sexo">Sexo</label>
+                  <select class="form-control" id="sexo" name="sexo" required>
+                    <option disabled selected>Escolha o sexo</option>
+                    <option>Masculino</option>
+                    <option>Feminino</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="data_atendimento">Data de Atendimento</label>
+                  <input type="date" class="form-control" id="data_atendimento" name="data_atendimento" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="instagram">Instagram</label>
+                  <input type="text" class="form-control" id="instagram" name="instagram" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="endereco">Endereço</label>
+                  <input type="text" class="form-control" id="endereco" name="endereco">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="cartela_cores">Cartela de Cores</label>
+                  <select class="form-control" id="cartela_cores" name="cartela_cores">
+                    <option disabled selected>Escolha a cartela de cores</option>
+                    <option>Verão claro</option>
+                    <option>Verão suave</option>
+                    <option>Verão frio</option>
+                    <option>Primavera clara</option>
+                    <option>Primavera quente</option>
+                    <option>Primavera brilhante</option>
+                    <option>Outono escuro</option>
+                    <option>Outono quente</option>
+                    <option>Outono suave</option>
+                    <option>Inverno frio</option>
+                    <option>Inverno escuro</option>
+                    <option>Inverno brilhante</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="estilo1">Estilo 1</label>
+                  <select class="form-control" id="estilo1" name="estilo1">
+                    <option disabled selected>Escolha o estilo 1</option>
+                    <option>Clássico</option>
+                    <option>Casual</option>
+                    <option>Elegante</option>
+                    <option>Romântico</option>
+                    <option>Sensual</option>
+                    <option>Dramático</option>
+                    <option>Criativo</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="estilo2">Estilo 2</label>
+                  <select class="form-control" id="estilo2" name="estilo2">
+                    <option disabled selected>Escolha o estilo 2</option>
+                    <option>Clássico</option>
+                    <option>Casual</option>
+                    <option>Elegante</option>
+                    <option>Romântico</option>
+                    <option>Sensual</option>
+                    <option>Dramático</option>
+                    <option>Criativo</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="estilo3">Estilo 3</label>
+                  <select class="form-control" id="estilo3" name="estilo3">
+                    <option disabled selected>Escolha o estilo 3</option>
+                    <option>Clássico</option>
+                    <option>Casual</option>
+                    <option>Elegante</option>
+                    <option>Romântico</option>
+                    <option>Sensual</option>
+                    <option>Dramático</option>
+                    <option>Criativo</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="biotipo">Biotipo</label>
+                  <select class="form-control" id="biotipo" name="biotipo">
+                    <option disabled selected>Escolha o biotipo</option>
+                    <option>Ampulheta</option>
+                    <option>Triângulo invertido</option>
+                    <option>Triângulo</option>
+                    <option>Oval</option>
+                    <option>Retângulo</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="formato_rosto">Formato de Rosto</label>
+                  <select class="form-control" id="formato_rosto" name="formato_rosto">
+                    <option disabled selected>Escolha o formato de rosto</option>
+                    <option>Redondo</option>
+                    <option>Oval</option>
+                    <option>Retangular</option>
+                    <option>Quadrado</option>
+                    <option>Triangular invertido</option>
+                    <option>Losango</option>
+                    <option>Triangular</option>
+                    <option>Hexagonal</option>
+                    <option>Hexagonal de lateral reta</option>
+                    <option>Hexagonal de base reta</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="altura">Altura</label>
+                  <input type="text" class="form-control" id="altura" name="altura" pattern="^\d{1,3},\d{1,2}$" title="Use vírgula como separador decimal. Ex: 1,75" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="peso">Peso</label>
+                  <input type="text" class="form-control" id="peso" name="peso" pattern="^\d{1,3},\d{1,2}$" title="Use vírgula como separador decimal. Ex: 70,5" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="calcado">Calçado</label>
+                  <input type="number" class="form-control" id="calcado" name="calcado" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="medida_ombro">Medida Ombro</label>
+                  <input type="text" class="form-control" id="medida_ombro" name="medida_ombro" pattern="^\d{1,3},\d{1,2}$" title="Use vírgula como separador decimal. Ex: 40,5" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="medida_cintura">Medida Cintura</label>
+                  <input type="text" class="form-control" id="medida_cintura" name="medida_cintura" pattern="^\d{1,3},\d{1,2}$" title="Use vírgula como separador decimal. Ex: 70,5" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="medida_quadril">Medida Quadril</label>
+                  <input type="text" class="form-control" id="medida_quadril" name="medida_quadril" pattern="^\d{1,3},\d{1,2}$" title="Use vírgula como separador decimal. Ex: 90,5" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="medida_rosto">Medida Rosto</label>
+                  <input type="text" class="form-control" id="medida_rosto" name="medida_rosto" pattern="^\d{1,3},\d{1,2}$" title="Use vírgula como separador decimal. Ex: 25,5" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="medida_tronco">Medida de Tronco</label>
+                  <input type="text" class="form-control" id="medida_tronco" name="medida_tronco" pattern="^\d{1,3},\d{1,2}$" title="Use vírgula como separador decimal. Ex: 50,5" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="medida_perna">Medida de Perna</label>
+                  <input type="text" class="form-control" id="medida_perna" name="medida_perna" pattern="^\d{1,3},\d{1,2}$" title="Use vírgula como separador decimal. Ex: 60,5" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="pescoco">Pescoço</label>
+                  <select class="form-control" id="pescoco" name="pescoco">
+                    <option disabled selected>Escolha o pescoço</option>
+                    <option>Curto</option>
+                    <option>Longo</option>
+                    <option>Normal</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="busto">Busto</label>
+                  <input type="text" class="form-control" id="busto" name="busto" pattern="^\d{1,3},\d{1,2}$" title="Use vírgula como separador decimal. Ex: 90,5" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="ombros">Ombros</label>
+                  <select class="form-control" id="ombros" name="ombros">
+                    <option disabled selected>Escolha os ombros</option>
+                    <option>Retos</option>
+                    <option>Inclinado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="ombros_tamanho">Tamanho dos Ombros</label>
+                  <select class="form-control" id="ombros_tamanho" name="ombros_tamanho">
+                    <option disabled selected>Escolha o tamanho dos ombros</option>
+                    <option>Pequeno</option>
+                    <option>Médio</option>
+                    <option>Grande</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="peso_visual">Peso Visual</label>
+                  <select class="form-control" id="peso_visual" name="peso_visual">
+                    <option disabled selected>Escolha o peso visual</option>
+                    <option>Busto</option>
+                    <option>Braço</option>
+                    <option>Quadril</option>
+                    <option>Coxa</option>
+                    <option>Barriga</option>
+                    <option>Bumbum</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="valor">Valor</label>
+                  <input type="text" class="form-control currency-field" id="valor" name="valor" required pattern="^R\$\s\d{1,3}(\.\d{3})*,\d{2}$" title="Formato correto: R$ 1.000,00">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="data_pagamento">Data de Pagamento</label>
+                  <input type="date" class="form-control" id="data_pagamento" name="data_pagamento" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="servico_valor">Serviço Valor</label>
+                  <select class="form-control" id="servico_valor" name="servico_valor">
+                    <option disabled selected>Escolha o serviço</option>
+                    <option>Consultoria completa feminina</option>
+                    <option>Consultoria completa masculina</option>
+                    <option>Estratégia de imagem</option>
+                    <option>Coloração pessoal</option>
+                    <option>Detox de closet</option>
+                    <option>Personal shopper</option>
+                    <option>Montagem de looks</option>
+                    <option>Mala de viagem</option>
+                    <option>Pacote 2 (estratégia + coloração)</option>
+                    <option>Pacote 3 (estratégia + personal shopper)</option>
+                    <option>Pacote 4 (detox + montagem de looks)</option>
+                    <option>Consultoria sempre presente (plano mensal)</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="forma_pagamento">Forma de Pagamento</label>
+                  <select class="form-control" id="forma_pagamento" name="forma_pagamento">
+                    <option disabled selected>Escolha a forma de pagamento</option>
+                    <option>PIX</option>
+                    <option>Débito</option>
+                    <option>Crédito 1 a 10x</option>
+                    <option>Dinheiro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="observacoes">Observações Gerais</label>
+                  <textarea class="form-control" id="observacoes" name="observacoes" rows="3" maxlength="200"></textarea>
+                </div>
+              </div>
+              <h5 class="text-center mb-4">Rotina</h5>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="academia">Academia</label>
+                  <input type="number" class="form-control" id="academia" name="academia" min="0" max="10" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="trabalho_formal">Trabalho Formal</label>
+                  <input type="number" class="form-control" id="trabalho_formal" name="trabalho_formal" min="0" max="10" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="trabalho_informal">Trabalho Informal</label>
+                  <input type="number" class="form-control" id="trabalho_informal" name="trabalho_informal" min="0" max="10" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="home_office">Home Office</label>
+                  <input type="number" class="form-control" id="home_office" name="home_office" min="0" max="10" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="almoco_familia">Almoço em Família</label>
+                  <input type="number" class="form-control" id="almoco_familia" name="almoco_familia" min="0" max="10" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="viagem">Viagem</label>
+                  <input type="number" class="form-control" id="viagem" name="viagem" min="0" max="10" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="balada">Balada</label>
+                  <input type="number" class="form-control" id="balada" name="balada" min="0" max="10" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="sair_jantar">Sair para Jantar</label>
+                  <input type="number" class="form-control" id="sair_jantar" name="sair_jantar" min="0" max="10" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="eventos_corporativos">Eventos Corporativos</label>
+                  <input type="number" class="form-control" id="eventos_corporativos" name="eventos_corporativos" min="0" max="10" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="praia_clube">Praia/Clube</label>
+                  <input type="number" class="form-control" id="praia_clube" name="praia_clube" min="0" max="10" required>
+                </div>
+              </div>
+              <button type="button" class="btn btn-custom" id="cadastrarBtn">
+                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                Cadastrar Novo Cliente
+              </button>
+              <button type="button" class="btn btn-custom" id="editarBtn">Editar</button>
+              <button type="button" class="btn btn-custom" id="excluirBtn">Excluir</button>
+              <button type="button" class="btn btn-custom" id="pesquisarBtn">Pesquisar</button>
+              <button type="button" class="btn btn-custom" id="limparBtn">Limpar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="listarcliente" role="tabpanel" aria-labelledby="listarcliente-tab">
+        <div class="card">
+          <div class="card-body">
+            <input type="text" id="filtroNome" class="form-control mb-3" placeholder="Filtrar por Nome">
+            <div class="table-responsive">
+              <table class="table table-striped table-hover" id="tabelaClientes">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Idade</th>
+                    <th>Sexo</th>
+                    <th>Instagram</th>
+                    <th>Endereço</th>
+                    <th>Cartela de Cores</th>
+                    <th>Estilo 1</th>
+                    <th>Estilo 2</th>
+                    <th>Estilo 3</th>
+                    <th>Biotipo</th>
+                    <th>Formato de Rosto</th>
+                    <th>Altura</th>
+                    <th>Peso</th>
+                    <th>Calçado</th>
+                    <th>Medida Ombro</th>
+                    <th>Medida Cintura</th>
+                    <th>Medida Quadril</th>
+                    <th>Medida Rosto</th>
+                    <th>Medida Tronco</th>
+                    <th>Medida Perna</th>
+                    <th>Pescoço</th>
+                    <th>Busto</th>
+                    <th>Ombros</th>
+                    <th>Tamanho Ombros</th>
+                    <th>Peso Visual</th>
+                    <th>Serviço Valor</th>
+                    <th>Forma de Pagamento</th>
+                    <th>Observações</th>
+                    <th>Valor</th>
+                    <th>Academia</th>
+                    <th>Trabalho Formal</th>
+                    <th>Trabalho Informal</th>
+                    <th>Home Office</th>
+                    <th>Almoço em Família</th>
+                    <th>Viagem</th>
+                    <th>Balada</th>
+                    <th>Sair para Jantar</th>
+                    <th>Eventos Corporativos</th>
+                    <th>Praia/Clube</th>
+                    <th>Data de Atendimento</th>
+                    <th>Data de Pagamento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Conteúdo da tabela será carregado dinamicamente -->
+                </tbody>
+              </table>
+            </div>
+            <button type="button" class="btn btn-success mt-3" id="downloadExcelBtn">Baixar Excel</button>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="grafico" role="tabpanel" aria-labelledby="grafico-tab">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="result-field" id="resultadoCliente"></div>
+            <input type="text" id="pesquisaGrafico" class="form-control mb-3" placeholder="Pesquisar por Nome ou ID">
+          </div>
+          <div class="col-md-6">
+            <canvas id="graficoPizza" width="400" height="400"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3" id="resultado"></div>
+  </div>
+</body>
+</html>
